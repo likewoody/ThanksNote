@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C81EA5812C02F36A003EE2F2 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EA5802C02F36A003EE2F2 /* CalendarView.swift */; };
+		C832447F2C0326F1007CDF31 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C832447E2C0326F1007CDF31 /* Detail.swift */; };
+		C83244812C032C12007CDF31 /* DetailThanksThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83244802C032C12007CDF31 /* DetailThanksThree.swift */; };
+		C83244852C033B99007CDF31 /* DetailGoodyBad.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83244842C033B99007CDF31 /* DetailGoodyBad.swift */; };
+		C83244872C033C82007CDF31 /* DetailWriteOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83244862C033C82007CDF31 /* DetailWriteOne.swift */; };
+		C8A561F62C02FC2E0036AD8C /* DBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A561F52C02FC2D0036AD8C /* DBModel.swift */; };
+		C8A561F92C02FD940036AD8C /* QueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A561F82C02FD940036AD8C /* QueryModel.swift */; };
 		C8F33FC92C01653100D0F545 /* TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F33FC82C01653100D0F545 /* TestApp.swift */; };
 		C8F33FCB2C01653100D0F545 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F33FCA2C01653100D0F545 /* ContentView.swift */; };
 		C8F33FCD2C01653200D0F545 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8F33FCC2C01653200D0F545 /* Assets.xcassets */; };
@@ -15,11 +22,16 @@
 		C8F33FDD2C01CB4300D0F545 /* ThanksThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F33FDC2C01CB4300D0F545 /* ThanksThree.swift */; };
 		C8F33FDF2C01CC5E00D0F545 /* GoodyBad.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F33FDE2C01CC5E00D0F545 /* GoodyBad.swift */; };
 		C8F33FE12C01CD5600D0F545 /* WriteOneLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F33FE02C01CD5600D0F545 /* WriteOneLine.swift */; };
-		C8F33FE42C01D84400D0F545 /* FrontendCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F33FE32C01D84400D0F545 /* FrontendCalendar.swift */; };
-		C8F33FE62C01D89800D0F545 /* BackendCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F33FE52C01D89800D0F545 /* BackendCalendar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C81EA5802C02F36A003EE2F2 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		C832447E2C0326F1007CDF31 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
+		C83244802C032C12007CDF31 /* DetailThanksThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailThanksThree.swift; sourceTree = "<group>"; };
+		C83244842C033B99007CDF31 /* DetailGoodyBad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGoodyBad.swift; sourceTree = "<group>"; };
+		C83244862C033C82007CDF31 /* DetailWriteOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWriteOne.swift; sourceTree = "<group>"; };
+		C8A561F52C02FC2D0036AD8C /* DBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBModel.swift; sourceTree = "<group>"; };
+		C8A561F82C02FD940036AD8C /* QueryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryModel.swift; sourceTree = "<group>"; };
 		C8F33FC52C01653100D0F545 /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8F33FC82C01653100D0F545 /* TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestApp.swift; sourceTree = "<group>"; };
 		C8F33FCA2C01653100D0F545 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -29,8 +41,6 @@
 		C8F33FDC2C01CB4300D0F545 /* ThanksThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksThree.swift; sourceTree = "<group>"; };
 		C8F33FDE2C01CC5E00D0F545 /* GoodyBad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodyBad.swift; sourceTree = "<group>"; };
 		C8F33FE02C01CD5600D0F545 /* WriteOneLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteOneLine.swift; sourceTree = "<group>"; };
-		C8F33FE32C01D84400D0F545 /* FrontendCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontendCalendar.swift; sourceTree = "<group>"; };
-		C8F33FE52C01D89800D0F545 /* BackendCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendCalendar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +54,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C832447C2C0326D9007CDF31 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				C832447E2C0326F1007CDF31 /* Detail.swift */,
+				C83244802C032C12007CDF31 /* DetailThanksThree.swift */,
+				C83244842C033B99007CDF31 /* DetailGoodyBad.swift */,
+				C83244862C033C82007CDF31 /* DetailWriteOne.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		C8A561F42C02FC1B0036AD8C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C8A561F52C02FC2D0036AD8C /* DBModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C8A561F72C02FD640036AD8C /* VM */ = {
+			isa = PBXGroup;
+			children = (
+				C8A561F82C02FD940036AD8C /* QueryModel.swift */,
+			);
+			path = VM;
+			sourceTree = "<group>";
+		};
 		C8F33FBC2C01653100D0F545 = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +100,8 @@
 		C8F33FC72C01653100D0F545 /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				C8A561F72C02FD640036AD8C /* VM */,
+				C8A561F42C02FC1B0036AD8C /* Model */,
 				C8F33FD62C01820800D0F545 /* View */,
 				C8F33FC82C01653100D0F545 /* TestApp.swift */,
 				C8F33FCA2C01653100D0F545 /* ContentView.swift */,
@@ -83,13 +122,14 @@
 		C8F33FD62C01820800D0F545 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C832447C2C0326D9007CDF31 /* Detail */,
 				C8F33FE22C01D7FB00D0F545 /* Calendar */,
-				C8F33FDB2C01CB2E00D0F545 /* AddPage */,
+				C8F33FDB2C01CB2E00D0F545 /* Add */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		C8F33FDB2C01CB2E00D0F545 /* AddPage */ = {
+		C8F33FDB2C01CB2E00D0F545 /* Add */ = {
 			isa = PBXGroup;
 			children = (
 				C8F33FD92C01829000D0F545 /* Add.swift */,
@@ -97,14 +137,13 @@
 				C8F33FDE2C01CC5E00D0F545 /* GoodyBad.swift */,
 				C8F33FE02C01CD5600D0F545 /* WriteOneLine.swift */,
 			);
-			path = AddPage;
+			path = Add;
 			sourceTree = "<group>";
 		};
 		C8F33FE22C01D7FB00D0F545 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				C8F33FE32C01D84400D0F545 /* FrontendCalendar.swift */,
-				C8F33FE52C01D89800D0F545 /* BackendCalendar.swift */,
+				C81EA5802C02F36A003EE2F2 /* CalendarView.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -180,14 +219,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8A561F62C02FC2E0036AD8C /* DBModel.swift in Sources */,
 				C8F33FDD2C01CB4300D0F545 /* ThanksThree.swift in Sources */,
+				C83244872C033C82007CDF31 /* DetailWriteOne.swift in Sources */,
+				C832447F2C0326F1007CDF31 /* Detail.swift in Sources */,
 				C8F33FDF2C01CC5E00D0F545 /* GoodyBad.swift in Sources */,
-				C8F33FE62C01D89800D0F545 /* BackendCalendar.swift in Sources */,
+				C81EA5812C02F36A003EE2F2 /* CalendarView.swift in Sources */,
+				C8A561F92C02FD940036AD8C /* QueryModel.swift in Sources */,
 				C8F33FE12C01CD5600D0F545 /* WriteOneLine.swift in Sources */,
 				C8F33FDA2C01829000D0F545 /* Add.swift in Sources */,
 				C8F33FCB2C01653100D0F545 /* ContentView.swift in Sources */,
-				C8F33FE42C01D84400D0F545 /* FrontendCalendar.swift in Sources */,
 				C8F33FC92C01653100D0F545 /* TestApp.swift in Sources */,
+				C83244812C032C12007CDF31 /* DetailThanksThree.swift in Sources */,
+				C83244852C033B99007CDF31 /* DetailGoodyBad.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,18 +9,18 @@ import SwiftUI
 
 struct Add: View {
     
-    var selectedIndex: Int
-    @State var title: String = ""
+    var category: Int
+    var nowDate: String
     
     var body: some View {
         VStack(content: {
-            switch selectedIndex{
+            switch category{
             case 0:
-                ThanksThree()
+                ThanksThree(nowDate: nowDate)
             case 1:
-                GoodyBad()
+                GoodyBad(nowDate: nowDate)
             default:
-                WriteOneline()
+                WriteOneline(nowDate: nowDate)
             }
             
         }) // VStack

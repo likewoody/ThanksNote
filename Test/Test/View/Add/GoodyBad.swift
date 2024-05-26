@@ -13,22 +13,14 @@ struct GoodyBad:View{
     @State var badThing: String = ""
     @Environment(\.dismiss) var dismiss
     
-    // date formatter
-    let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy년 MM월 dd일 EEE요일"
-        return formatter
-    }()
-    
-    // for showing Text
-    var date = Date()
+    var nowDate: String
 
     var body: some View{
         VStack(content: {
             
             Spacer()
             // 날짜 보여주기
-            Text(date, formatter: dateFormatter)
+            Text(nowDate)
                 .font(.headline)
             
             Spacer()
@@ -57,7 +49,11 @@ struct GoodyBad:View{
             
             Button("추가하기", action: {
                 // DB랑 연결해서 DB에 연결하는 작업하기
-                dismiss()
+                let query = CUDQuery()
+                Task{
+                    try await query.executeQuery(url: URL(string: "http://localhost:8080/iOS/JSP/InsertThanksNote.jsp?category=1&content1=\(goodThing)&content2=\(badThing)")!)
+                    dismiss()
+                }
             })
             .frame(width: 80, height: 24)
             .padding()
