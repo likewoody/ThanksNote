@@ -16,6 +16,7 @@ struct DetailThanksThree: View{
     @Environment(\.dismiss) var dismiss
     @State var note: DBModel
     @State var isAlert: Bool = false
+    @State var isDelete: Bool = false
     
     var nowDate: String
 
@@ -73,17 +74,41 @@ struct DetailThanksThree: View{
             .foregroundStyle(.white)
             .clipShape(.rect(cornerRadius: 10))
             .alert("수정이 완료 되었습니다.", isPresented: $isAlert) {
-                Button("확인", action: {dismiss()})
+                Button("확인", action: {
+                    isAlert = false
+                    dismiss()
+                })
             }
             
             Spacer()
         }) // VStack
         .navigationTitle("감사 노트")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar(content: {
+            ToolbarItem(placement: .topBarTrailing, content: {
+                Button("", systemImage: "trash", action: {
+                    isDelete = true
+                })
+            })
+        })
         .onAppear(perform: {
             thanksNote1 = note.content1
             thanksNote2 = note.content2!
             thanksNote3 = note.content3!
+        })
+        .alert("삭제 하시겠습니까?", isPresented: $isDelete, actions: {
+            HStack(content: {
+                Button("네", action: {
+                    let query = CUDQuery()
+                    Task{
+                        try await query.executeQuery(url:URL(string: "http://localhost:8080/iOS/JSP/DeleteThanksNote.jsp?id=\(note.id)")!)
+                        isDelete = false
+                        dismiss()
+                    }
+                    
+                })
+                Button("아니요", action: {})
+            })
         })
 //        .toolbar(content: {
 //            ToolbarItem(placement: .topBarLeading, content: {

@@ -15,6 +15,7 @@ struct DetailGoodyBad:View{
     @Environment(\.dismiss) var dismiss
     @State var note: DBModel
     @State var isAlert: Bool = false
+    @State var isDelete: Bool = false
     
     var nowDate: String
 
@@ -71,9 +72,30 @@ struct DetailGoodyBad:View{
         }) // VStack
         .navigationTitle("좋은 일 못한 일")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar(content: {
+            ToolbarItem(placement: .topBarTrailing, content: {
+                Button("", systemImage: "trash", action: {
+                    isDelete = true
+                })
+            })
+        })
         .onAppear(perform: {
             goodThing = note.content1
             badThing = note.content2!
+        })
+        .alert("삭제 하시겠습니까?", isPresented: $isDelete, actions: {
+            HStack(content: {
+                Button("네", action: {
+                    let query = CUDQuery()
+                    Task{
+                        try await query.executeQuery(url:URL(string: "http://localhost:8080/iOS/JSP/DeleteThanksNote.jsp?id=\(note.id)")!)
+                        isDelete = false
+                        dismiss()
+                    }
+                    
+                })
+                Button("아니요", action: {})
+            })
         })
         
     } // body

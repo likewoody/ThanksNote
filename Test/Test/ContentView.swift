@@ -12,13 +12,13 @@
      Version : 1.0.0
  */
 
+
+
 // note List View
 // 필요한 작업 MySQL을 통해 데이터를 불러와서 List에 보여줘야함.
 // 이게 MySQL에서 불러오는 작업이 잘 진행되지 않아 어떻게 진행해야 할지 고민중
 
-// Detail View
-// 클릭 시 데이터에 들어갔을 때 데이터를 삭제 하는 우측 상단 Query를 완료 해야함.
-// View도 제대로 작성되지 않았따.
+
 
 
 
@@ -43,18 +43,18 @@ struct ContentView: View {
 
 struct CalendarView: View {
     
-    var testScheduleList = [
-        DBModel(id: 1, category: "0", content1: "테스트입니다1", content2: "테스트입니다2", content3: "테스트입니다3", date: "2024-05-26"),
-        DBModel(id: 2, category: "1", content1: "테스트입니다1", content2: "테스트입니다2", date: "2024-05-26"),
-        DBModel(id: 3, category: "2", content1: "테스트입니다1", date: "2024-05-26"),
-        DBModel(id: 4, category: "0", content1: "테스트입니다1", content2: "테스트입니다2", content3: "테스트입니다3", date: "2024-05-26"),
-        DBModel(id: 5, category: "1", content1: "테스트입니다1", content2: "테스트입니다2", content3: "테스트입니다3", date: "2024-05-26"),
-//        DBModel(id: 0, category: "1", content: "테스트입니다2", date: "2024-05-26"),
-//        DBModel(id: 0, category: "2", content: "테스트입니다3", date: "2024-05-26"),
-//        DBModel(id: 0, category: "0", content: "테스트입니다4", date: "2024-05-26"),
-//        DBModel(id: 0, category: "1", content: "테스트입니다5", date: "2024-05-26"),
-//        DBModel(id: 0, category: "2", content: "테스트입니다6", date: "2024-05-26")
-    ]
+//    var testScheduleList = [
+//        DBModel(id: 1, category: "0", content1: "테스트입니다1", content2: "테스트입니다2", content3: "테스트입니다3", date: "2024-05-26"),
+//        DBModel(id: 2, category: "1", content1: "테스트입니다1", content2: "테스트입니다2", date: "2024-05-26"),
+//        DBModel(id: 3, category: "2", content1: "테스트입니다1", date: "2024-05-26"),
+//        DBModel(id: 4, category: "0", content1: "테스트입니다1", content2: "테스트입니다2", content3: "테스트입니다3", date: "2024-05-26"),
+//        DBModel(id: 5, category: "1", content1: "테스트입니다1", content2: "테스트입니다2", content3: "테스트입니다3", date: "2024-05-26"),
+////        DBModel(id: 0, category: "1", content: "테스트입니다2", date: "2024-05-26"),
+////        DBModel(id: 0, category: "2", content: "테스트입니다3", date: "2024-05-26"),
+////        DBModel(id: 0, category: "0", content: "테스트입니다4", date: "2024-05-26"),
+////        DBModel(id: 0, category: "1", content: "테스트입니다5", date: "2024-05-26"),
+////        DBModel(id: 0, category: "2", content: "테스트입니다6", date: "2024-05-26")
+//    ]
     
     @State var daysList = [[DateValue]]()
     
@@ -198,6 +198,12 @@ struct CalendarView: View {
                     if 0 <= index && index < daysInMonth {
                         let date = getDate(for: index)
                         clickedCurrentMonthDates = date
+                        
+//                        let query = SearchQuery()
+//                        Task{
+//                            noteList = try await query.loadData(url: URL(string: "http://localhost:8080/iOS/JSP/SearchThanksNote.jsp?date=\(date)"))
+//                        }
+                        
                     }
                 } // onTapGesture
                 
@@ -218,19 +224,19 @@ struct CalendarView: View {
                 
 //                Group {
                     List{
-                        ForEach(testScheduleList.indices, id: \.self) { i in
+                        ForEach(noteList.indices, id: \.self) { i in
                             
-                            NavigationLink(destination: Detail(id: testScheduleList[i].id, category: testScheduleList[i].category, nowDate: nowDateFormatter.string(from: nowDate), note: testScheduleList[i]), label: {
+                            NavigationLink(destination: Detail(id: noteList[i].id, category: noteList[i].category, nowDate: nowDateFormatter.string(from: nowDate), note: noteList[i]), label: {
                                     HStack(content: {
                                         
-                                        Text(testScheduleList[i].content1)
-                                        Text(testScheduleList[i].date)
+                                        Text(noteList[i].content1)
+                                        Text(noteList[i].date)
                                         
                                        Spacer()
                                         RoundedRectangle(cornerRadius: 5)
                                             .frame(width: 10, height: 10)
                                             .foregroundStyle(
-                                                testScheduleList[i].category == "0" ? .orange : testScheduleList[i].category == "1" ? .red : .indigo
+                                                noteList[i].category == "0" ? .orange : noteList[i].category == "1" ? .red : .indigo
                                             )
         //                                    .background(.red)
                                             
@@ -391,17 +397,17 @@ private extension CalendarView {
         let date = calendar.date(byAdding: dateComponents, to: firstDayOfMonth) ?? Date()
         
         
-        if date.formattedCalendarDayDate == today.formattedCalendarDayDate {
-            let query = SearchQuery()
-            Task {
-                // 비동기 작업 수행
-                let result = try await query.loadData(url: URL(string: "http://localhost:8080/iOS/JSP/SearchThanksNote.jsp?date=\(date.formattedCalendarDayDate)")!)
-                
-                // 작업 완료 후 반환값 처리
-                noteList = result
-                print(noteList)
-            }
-        }
+//        if date.formattedCalendarDayDate == today.formattedCalendarDayDate {
+//            let query = SearchQuery()
+//            Task {
+//                // 비동기 작업 수행
+//                let result = try await query.loadData(url: URL(string: "http://localhost:8080/iOS/JSP/SearchThanksNote.jsp?date=\(date.formattedCalendarDayDate)")!)
+//                
+//                // 작업 완료 후 반환값 처리
+//                noteList = result
+//                print(noteList)
+//            }
+//        }
 //        Timer(timeInterval: 2, repeats: false) { Timer in
 //            print("기다리는 중")
 //        }

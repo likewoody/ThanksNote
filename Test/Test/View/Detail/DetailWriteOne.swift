@@ -13,6 +13,7 @@ struct DetailWriteOneline: View{
     @Environment(\.dismiss) var dismiss
     @State var note: DBModel
     @State var isAlert: Bool = false
+    @State var isDelete: Bool = false
     
     var nowDate: String
 
@@ -57,8 +58,29 @@ struct DetailWriteOneline: View{
         }) // VStack
         .navigationTitle("한 줄 글쓰기")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar(content: {
+            ToolbarItem(placement: .topBarTrailing, content: {
+                Button("", systemImage: "trash", action: {
+                    isDelete = true
+                })
+            })
+        })
         .onAppear(perform: {
             writeOne = note.content1
+        })
+        .alert("삭제 하시겠습니까?", isPresented: $isDelete, actions: {
+            HStack(content: {
+                Button("네", action: {
+                    let query = CUDQuery()
+                    Task{
+                        try await query.executeQuery(url:URL(string: "http://localhost:8080/iOS/JSP/DeleteThanksNote.jsp?id=\(note.id)")!)
+                        isDelete = false
+                        dismiss()
+                    }
+                    
+                })
+                Button("아니요", action: {})
+            })
         })
         
     } // body
