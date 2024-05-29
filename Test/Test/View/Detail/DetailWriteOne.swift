@@ -66,7 +66,7 @@ struct DetailWriteOneline: View{
             })
         })
         .onAppear(perform: {
-            writeOne = note.content3 ?? ""
+            writeOne = note.content1 ?? ""
         })
         .alert("삭제 하시겠습니까?", isPresented: $isDelete, actions: {
             HStack(content: {

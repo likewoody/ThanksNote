@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct DateStatic{
+struct NoteStatic{
     static var isCurrentDateClicked = Date()
 }

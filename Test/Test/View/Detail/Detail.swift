@@ -11,7 +11,6 @@ struct Detail: View {
     @State var id: String
     @State var category: String
     @State var nowDate: String
-    
     @State var note: DBModel
     
     var body: some View {

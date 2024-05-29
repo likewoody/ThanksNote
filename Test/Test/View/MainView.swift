@@ -14,7 +14,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainView: View {
     @State var month = Date()
     
     var body: some View {
@@ -37,8 +37,6 @@ struct CalendarView: View {
     
     @State private var month: Date = Date()
     @State private var clickedCurrentMonthDates: Date?
-    
-    
     
     init(
         month: Date = Date(),
@@ -150,7 +148,7 @@ struct CalendarView: View {
                     if 0 <= index && index < daysInMonth {
                         let date = getDate(for: index)
                         clickedCurrentMonthDates = date
-                        DateStatic.isCurrentDateClicked = clickedCurrentMonthDates ?? Date()
+                        NoteStatic.isCurrentDateClicked = clickedCurrentMonthDates ?? Date()
                         
                     }
                 } // onTapGesture
@@ -168,14 +166,11 @@ struct CalendarView: View {
 private struct NoteListView: View{
     
     @State var noteList: [DBModel] = []
-    @State var showPicker = false
     @State var selection = ""
+    @State var isClickedPlus = false
 
     // 현재 날짜 Detail, AddPage로 보내기
     var nowDate = Date()
-    
-    
-    
     
     // MARK: - noteListView and Floating Action View
     fileprivate var body: some View{
@@ -189,16 +184,19 @@ private struct NoteListView: View{
                         NavigationLink(destination: Detail(id: note.id, category: note.category, nowDate: note.date, note: note), label: {
                                 HStack(content: {
                                     // 클릭했을 때 calendarGridView를 통해서 Static으로 date를 가져와서 DB에 데이터와 비교해서 클릭한 날짜만 출력한다.
-                                    if DateStatic.isCurrentDateClicked.formattedCurrentClickedDate == note.date {
+                                    if NoteStatic.isCurrentDateClicked.formattedCurrentClickedDate == note.date {
                                         Text(((note.content1 ?? note.content2) ?? note.content3) ?? "")
-                                        Text(note.date)
-                                            .frame(alignment: .trailing)
+                                        
                                         Spacer()
+                                        
+                                        Text(note.date)
+                                        
                                          RoundedRectangle(cornerRadius: 5)
                                              .frame(width: 10, height: 10)
                                              .foregroundStyle(
                                                  note.category == "0" ? .orange : note.category == "1" ? .red : .indigo
                                              )
+                                             .padding(.leading, 8)
                                     }
                                 }) // HStack
                                 .frame(height: 50)
@@ -210,7 +208,7 @@ private struct NoteListView: View{
                 // for floating button
                 ZStack(content: {
                     Button(action: {
-                        showPicker.toggle()
+                        isClickedPlus.toggle()
                         
                     }){
                         Image(systemName: "plus")
@@ -222,7 +220,7 @@ private struct NoteListView: View{
                     } // Button
                     .position(x: geometry.size.width - 50, y: geometry.size.height / 2 - 200)
                     
-                    if showPicker {
+                    if isClickedPlus {
                         ForEach(0..<notes.count, id: \.self) { index in
                             NavigationLink(destination: Add(category: index, nowDate: nowDate.formattedNowDate), label: {
                                 Text(notes[index])
@@ -247,13 +245,14 @@ private struct NoteListView: View{
                 }) // ZStack
             }) // VStack
         }) // GeometryReader
-        .onAppear {
+        // Static을 이용해 onChange 날짜가 변동될 때만 ListView를 보여준다.
+        .onChange(of: NoteStatic.isCurrentDateClicked, {
             noteList.removeAll()
             let query = SearchQuery()
             Task{
-                noteList = try await query.loadData(url: URL(string: "http://localhost:8080")!)
+                noteList = try await query.loadData(url: URL(string: "http://localhost:8080/search?date=\(NoteStatic.isCurrentDateClicked)")!)
             }
-        }
+        })
     } // noteListView
 }
 
@@ -469,5 +468,5 @@ extension Date {
 
 
 #Preview {
-    ContentView()
+    MainView()
 }

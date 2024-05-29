@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		C81EA5812C02F36A003EE2F2 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EA5802C02F36A003EE2F2 /* CalendarView.swift */; };
 		C8285C842C05B08A00FD3418 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8285C832C05B08A00FD3418 /* Test.swift */; };
-		C82AA2632C06AC35001D36DC /* DateStatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82AA2622C06AC35001D36DC /* DateStatic.swift */; };
+		C82AA2632C06AC35001D36DC /* NoteStatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82AA2622C06AC35001D36DC /* NoteStatic.swift */; };
 		C832447F2C0326F1007CDF31 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C832447E2C0326F1007CDF31 /* Detail.swift */; };
 		C83244812C032C12007CDF31 /* DetailThanksThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83244802C032C12007CDF31 /* DetailThanksThree.swift */; };
 		C83244852C033B99007CDF31 /* DetailGoodyBad.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83244842C033B99007CDF31 /* DetailGoodyBad.swift */; };
@@ -17,7 +17,7 @@
 		C8A561F62C02FC2E0036AD8C /* DBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A561F52C02FC2D0036AD8C /* DBModel.swift */; };
 		C8A561F92C02FD940036AD8C /* QueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A561F82C02FD940036AD8C /* QueryModel.swift */; };
 		C8F33FC92C01653100D0F545 /* TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F33FC82C01653100D0F545 /* TestApp.swift */; };
-		C8F33FCB2C01653100D0F545 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F33FCA2C01653100D0F545 /* ContentView.swift */; };
+		C8F33FCB2C01653100D0F545 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F33FCA2C01653100D0F545 /* MainView.swift */; };
 		C8F33FCD2C01653200D0F545 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8F33FCC2C01653200D0F545 /* Assets.xcassets */; };
 		C8F33FD02C01653200D0F545 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8F33FCF2C01653200D0F545 /* Preview Assets.xcassets */; };
 		C8F33FDA2C01829000D0F545 /* Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F33FD92C01829000D0F545 /* Add.swift */; };
@@ -29,7 +29,7 @@
 /* Begin PBXFileReference section */
 		C81EA5802C02F36A003EE2F2 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		C8285C832C05B08A00FD3418 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
-		C82AA2622C06AC35001D36DC /* DateStatic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStatic.swift; sourceTree = "<group>"; };
+		C82AA2622C06AC35001D36DC /* NoteStatic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteStatic.swift; sourceTree = "<group>"; };
 		C832447E2C0326F1007CDF31 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		C83244802C032C12007CDF31 /* DetailThanksThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailThanksThree.swift; sourceTree = "<group>"; };
 		C83244842C033B99007CDF31 /* DetailGoodyBad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGoodyBad.swift; sourceTree = "<group>"; };
@@ -38,7 +38,7 @@
 		C8A561F82C02FD940036AD8C /* QueryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryModel.swift; sourceTree = "<group>"; };
 		C8F33FC52C01653100D0F545 /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8F33FC82C01653100D0F545 /* TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestApp.swift; sourceTree = "<group>"; };
-		C8F33FCA2C01653100D0F545 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C8F33FCA2C01653100D0F545 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C8F33FCC2C01653200D0F545 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8F33FCF2C01653200D0F545 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C8F33FD92C01829000D0F545 /* Add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Add.swift; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				C8A561F52C02FC2D0036AD8C /* DBModel.swift */,
-				C82AA2622C06AC35001D36DC /* DateStatic.swift */,
+				C82AA2622C06AC35001D36DC /* NoteStatic.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -109,7 +109,6 @@
 				C8A561F42C02FC1B0036AD8C /* Model */,
 				C8F33FD62C01820800D0F545 /* View */,
 				C8F33FC82C01653100D0F545 /* TestApp.swift */,
-				C8F33FCA2C01653100D0F545 /* ContentView.swift */,
 				C8F33FCC2C01653200D0F545 /* Assets.xcassets */,
 				C8F33FCE2C01653200D0F545 /* Preview Content */,
 			);
@@ -127,6 +126,7 @@
 		C8F33FD62C01820800D0F545 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C8F33FCA2C01653100D0F545 /* MainView.swift */,
 				C832447C2C0326D9007CDF31 /* Detail */,
 				C8F33FE22C01D7FB00D0F545 /* Calendar */,
 				C8F33FDB2C01CB2E00D0F545 /* Add */,
@@ -232,11 +232,11 @@
 				C832447F2C0326F1007CDF31 /* Detail.swift in Sources */,
 				C8F33FDF2C01CC5E00D0F545 /* GoodyBad.swift in Sources */,
 				C81EA5812C02F36A003EE2F2 /* CalendarView.swift in Sources */,
-				C82AA2632C06AC35001D36DC /* DateStatic.swift in Sources */,
+				C82AA2632C06AC35001D36DC /* NoteStatic.swift in Sources */,
 				C8A561F92C02FD940036AD8C /* QueryModel.swift in Sources */,
 				C8F33FE12C01CD5600D0F545 /* WriteOneLine.swift in Sources */,
 				C8F33FDA2C01829000D0F545 /* Add.swift in Sources */,
-				C8F33FCB2C01653100D0F545 /* ContentView.swift in Sources */,
+				C8F33FCB2C01653100D0F545 /* MainView.swift in Sources */,
 				C8F33FC92C01653100D0F545 /* TestApp.swift in Sources */,
 				C83244812C032C12007CDF31 /* DetailThanksThree.swift in Sources */,
 				C83244852C033B99007CDF31 /* DetailGoodyBad.swift in Sources */,

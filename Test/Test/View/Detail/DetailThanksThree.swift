@@ -5,9 +5,6 @@
 //  Created by Woody on 5/26/24.
 //
 
-
-// 삭제가 안된다 delete
-// spring boot로는 웹사이트로 들어갔을 때는 들어가나 여기서 주소 찍어주면 delete를 못하네
 import SwiftUI
 
 struct DetailThanksThree: View{
