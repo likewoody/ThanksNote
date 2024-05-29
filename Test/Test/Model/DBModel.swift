@@ -14,16 +14,15 @@ struct DateValue: Identifiable {
     var isNotCurrentMonth: Bool = false
 }
 
-
-struct DBModel:Codable{
-    var id: Int
+struct DBModel: Decodable{
+    var id: String
     var category: String
-    var content1: String
+    var content1: String?
     var content2: String?
     var content3: String?
     var date: String
     
-    init(id: Int, category: String, content1: String, content2: String? = nil, content3: String? = nil, date: String) {
+    init(id: String, category: String, content1: String? = nil, content2: String? = nil, content3: String? = nil, date: String) {
         self.id = id
         self.category = category
         self.content1 = content1

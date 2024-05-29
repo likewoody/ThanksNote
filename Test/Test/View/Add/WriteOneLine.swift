@@ -39,7 +39,7 @@ struct WriteOneline: View{
                 // DB랑 연결해서 DB에 연결하는 작업하기
                 let query = CUDQuery()
                 Task{
-                    try await query.executeQuery(url: URL(string: "http://localhost:8080/iOS/JSP/InsertThanksNote.jsp?category=2&content1=\(writeOne)")!)
+                    try await query.executeQuery(url: URL(string: "http://localhost:8080/insert?content1=\(writeOne)&category=2")!)
                     dismiss()
                 }
             })

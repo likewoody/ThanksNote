@@ -51,7 +51,7 @@ struct GoodyBad:View{
                 // DB랑 연결해서 DB에 연결하는 작업하기
                 let query = CUDQuery()
                 Task{
-                    try await query.executeQuery(url: URL(string: "http://localhost:8080/iOS/JSP/InsertThanksNote.jsp?category=1&content1=\(goodThing)&content2=\(badThing)")!)
+                    try await query.executeQuery(url: URL(string: "http://localhost:8080/insert?content1=\(goodThing)&content2=\(badThing)&category=1")!)
                     dismiss()
                 }
             })

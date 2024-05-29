@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C81EA5812C02F36A003EE2F2 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81EA5802C02F36A003EE2F2 /* CalendarView.swift */; };
+		C8285C842C05B08A00FD3418 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8285C832C05B08A00FD3418 /* Test.swift */; };
+		C82AA2632C06AC35001D36DC /* DateStatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82AA2622C06AC35001D36DC /* DateStatic.swift */; };
 		C832447F2C0326F1007CDF31 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C832447E2C0326F1007CDF31 /* Detail.swift */; };
 		C83244812C032C12007CDF31 /* DetailThanksThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83244802C032C12007CDF31 /* DetailThanksThree.swift */; };
 		C83244852C033B99007CDF31 /* DetailGoodyBad.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83244842C033B99007CDF31 /* DetailGoodyBad.swift */; };
@@ -26,6 +28,8 @@
 
 /* Begin PBXFileReference section */
 		C81EA5802C02F36A003EE2F2 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		C8285C832C05B08A00FD3418 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		C82AA2622C06AC35001D36DC /* DateStatic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStatic.swift; sourceTree = "<group>"; };
 		C832447E2C0326F1007CDF31 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		C83244802C032C12007CDF31 /* DetailThanksThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailThanksThree.swift; sourceTree = "<group>"; };
 		C83244842C033B99007CDF31 /* DetailGoodyBad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGoodyBad.swift; sourceTree = "<group>"; };
@@ -69,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				C8A561F52C02FC2D0036AD8C /* DBModel.swift */,
+				C82AA2622C06AC35001D36DC /* DateStatic.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 				C832447C2C0326D9007CDF31 /* Detail */,
 				C8F33FE22C01D7FB00D0F545 /* Calendar */,
 				C8F33FDB2C01CB2E00D0F545 /* Add */,
+				C8285C832C05B08A00FD3418 /* Test.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -222,9 +228,11 @@
 				C8A561F62C02FC2E0036AD8C /* DBModel.swift in Sources */,
 				C8F33FDD2C01CB4300D0F545 /* ThanksThree.swift in Sources */,
 				C83244872C033C82007CDF31 /* DetailWriteOne.swift in Sources */,
+				C8285C842C05B08A00FD3418 /* Test.swift in Sources */,
 				C832447F2C0326F1007CDF31 /* Detail.swift in Sources */,
 				C8F33FDF2C01CC5E00D0F545 /* GoodyBad.swift in Sources */,
 				C81EA5812C02F36A003EE2F2 /* CalendarView.swift in Sources */,
+				C82AA2632C06AC35001D36DC /* DateStatic.swift in Sources */,
 				C8A561F92C02FD940036AD8C /* QueryModel.swift in Sources */,
 				C8F33FE12C01CD5600D0F545 /* WriteOneLine.swift in Sources */,
 				C8F33FDA2C01829000D0F545 /* Add.swift in Sources */,

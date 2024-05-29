@@ -61,7 +61,7 @@ struct ThanksThree:View {
                 // DB랑 연결해서 DB에 연결하는 작업하기
                 let query = CUDQuery()
                 Task{
-                    try await query.executeQuery(url: URL(string: "http://localhost:8080/iOS/JSP/InsertThanksNote.jsp?category=0&content1=\(thanksNote1)&content2=\(thanksNote2)&content3=\(thanksNote3)")!)
+                    try await query.executeQuery(url: URL(string: "http://localhost:8080/insert?content1=\(thanksNote1)&content2=\(thanksNote2)&content3=\(thanksNote3)&category=0")!)
                     dismiss()
                 }
             })

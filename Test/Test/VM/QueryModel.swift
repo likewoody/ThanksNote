@@ -14,14 +14,6 @@ struct SearchQuery{
     }
 }
 
-//struct SearchQuery{
-//    func loadData(url: URL) async throws -> DBModel{
-//        let (data, _) = try await URLSession.shared.data(from: url)
-//        return try JSONDecoder().decode(DBModel.self, from: data)
-//    }
-//}
-
-
 // Create, Update, Delete
 struct CUDQuery{
     func executeQuery(url: URL) async throws -> Bool{

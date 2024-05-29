@@ -12,16 +12,6 @@
      Version : 1.0.0
  */
 
-
-
-// note List View
-// 필요한 작업 MySQL을 통해 데이터를 불러와서 List에 보여줘야함.
-// 이게 MySQL에서 불러오는 작업이 잘 진행되지 않아 어떻게 진행해야 할지 고민중
-
-
-
-
-
 import SwiftUI
 
 struct ContentView: View {
@@ -43,41 +33,12 @@ struct ContentView: View {
 
 struct CalendarView: View {
     
-//    var testScheduleList = [
-//        DBModel(id: 1, category: "0", content1: "테스트입니다1", content2: "테스트입니다2", content3: "테스트입니다3", date: "2024-05-26"),
-//        DBModel(id: 2, category: "1", content1: "테스트입니다1", content2: "테스트입니다2", date: "2024-05-26"),
-//        DBModel(id: 3, category: "2", content1: "테스트입니다1", date: "2024-05-26"),
-//        DBModel(id: 4, category: "0", content1: "테스트입니다1", content2: "테스트입니다2", content3: "테스트입니다3", date: "2024-05-26"),
-//        DBModel(id: 5, category: "1", content1: "테스트입니다1", content2: "테스트입니다2", content3: "테스트입니다3", date: "2024-05-26"),
-////        DBModel(id: 0, category: "1", content: "테스트입니다2", date: "2024-05-26"),
-////        DBModel(id: 0, category: "2", content: "테스트입니다3", date: "2024-05-26"),
-////        DBModel(id: 0, category: "0", content: "테스트입니다4", date: "2024-05-26"),
-////        DBModel(id: 0, category: "1", content: "테스트입니다5", date: "2024-05-26"),
-////        DBModel(id: 0, category: "2", content: "테스트입니다6", date: "2024-05-26")
-//    ]
-    
     @State var daysList = [[DateValue]]()
     
     @State private var month: Date = Date()
     @State private var clickedCurrentMonthDates: Date?
     
-    // 바깥 최상위 레벨에 위치해 있어야 toggle이 정상적으로 작동한다.
-    // beacause of GeometryReader
-    @State var showPicker = false
-    @State var selection = ""
-//    @State var isToday = false
-    @State var noteList: [DBModel] = []
-//    @State var date: Date = Date()
     
-    let nowDateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy년 MM월 dd일 EEE요일"
-        return formatter
-    }()
-    
-    
-    // for showing Text
-    var nowDate = Date()
     
     init(
         month: Date = Date(),
@@ -91,8 +52,9 @@ struct CalendarView: View {
         VStack {
             headerView
             calendarGridView
-            noteListView
+            NoteListView()
         }
+
     } // body
     
     // MARK: - 헤더 뷰
@@ -102,15 +64,6 @@ struct CalendarView: View {
                 yearMonthView
                     .padding()
                 
-                //                Spacer()
-                //                Button(
-                //                    action: { },
-                //                    label: {
-                //                        Image(systemName: "list.bullet")
-                //                            .font(.title)
-                //                            .foregroundColor(.black)
-                //                    }
-                //                )
             } // HStack
             .padding(.horizontal, 10)
             .padding(.bottom, 5)
@@ -179,7 +132,6 @@ struct CalendarView: View {
                         let clicked = clickedCurrentMonthDates == date
                         let isToday = date.formattedCalendarDayDate == today.formattedCalendarDayDate
                         
-//                        clikedDate(date: date)
                         CellView(day: day, clicked: clicked, isToday: isToday)
                     } else if let prevMonthDate = Calendar.current.date(
                         byAdding: .day,
@@ -198,11 +150,7 @@ struct CalendarView: View {
                     if 0 <= index && index < daysInMonth {
                         let date = getDate(for: index)
                         clickedCurrentMonthDates = date
-                        
-//                        let query = SearchQuery()
-//                        Task{
-//                            noteList = try await query.loadData(url: URL(string: "http://localhost:8080/iOS/JSP/SearchThanksNote.jsp?date=\(date)"))
-//                        }
+                        DateStatic.isCurrentDateClicked = clickedCurrentMonthDates ?? Date()
                         
                     }
                 } // onTapGesture
@@ -214,39 +162,50 @@ struct CalendarView: View {
         
     } //calendarGridView
     
+} // CalendarView
+
+// MARK: - 메모 리스트 셀 뷰
+private struct NoteListView: View{
+    
+    @State var noteList: [DBModel] = []
+    @State var showPicker = false
+    @State var selection = ""
+
+    // 현재 날짜 Detail, AddPage로 보내기
+    var nowDate = Date()
+    
+    
+    
+    
     // MARK: - noteListView and Floating Action View
-    private var noteListView: some View{
+    fileprivate var body: some View{
     
         let notes = ["감사노트", "잘, 못한일", "한 줄 글쓰기"]
         
         return GeometryReader(content: { geometry in
             VStack(content: {
-                
-//                Group {
-                    List{
-                        ForEach(noteList.indices, id: \.self) { i in
-                            
-                            NavigationLink(destination: Detail(id: noteList[i].id, category: noteList[i].category, nowDate: nowDateFormatter.string(from: nowDate), note: noteList[i]), label: {
-                                    HStack(content: {
-                                        
-                                        Text(noteList[i].content1)
-                                        Text(noteList[i].date)
-                                        
-                                       Spacer()
-                                        RoundedRectangle(cornerRadius: 5)
-                                            .frame(width: 10, height: 10)
-                                            .foregroundStyle(
-                                                noteList[i].category == "0" ? .orange : noteList[i].category == "1" ? .red : .indigo
-                                            )
-        //                                    .background(.red)
-                                            
-                                    }) // HStack
-                                    .frame(height: 50)
-                                })
-                        } // ForEach
-                    } // List
-                    .frame(height: 300)
-//                } // Group
+                List{
+                    ForEach(noteList, id: \.id) { note in
+                        NavigationLink(destination: Detail(id: note.id, category: note.category, nowDate: note.date, note: note), label: {
+                                HStack(content: {
+                                    // 클릭했을 때 calendarGridView를 통해서 Static으로 date를 가져와서 DB에 데이터와 비교해서 클릭한 날짜만 출력한다.
+                                    if DateStatic.isCurrentDateClicked.formattedCurrentClickedDate == note.date {
+                                        Text(((note.content1 ?? note.content2) ?? note.content3) ?? "")
+                                        Text(note.date)
+                                            .frame(alignment: .trailing)
+                                        Spacer()
+                                         RoundedRectangle(cornerRadius: 5)
+                                             .frame(width: 10, height: 10)
+                                             .foregroundStyle(
+                                                 note.category == "0" ? .orange : note.category == "1" ? .red : .indigo
+                                             )
+                                    }
+                                }) // HStack
+                                .frame(height: 50)
+                        }) // NavigationLink
+                    } // ForEach
+                } // List
+                .frame(height: 300)
                 
                 // for floating button
                 ZStack(content: {
@@ -265,7 +224,7 @@ struct CalendarView: View {
                     
                     if showPicker {
                         ForEach(0..<notes.count, id: \.self) { index in
-                            NavigationLink(destination: Add(category: index, nowDate: nowDateFormatter.string(from: nowDate)), label: {
+                            NavigationLink(destination: Add(category: index, nowDate: nowDate.formattedNowDate), label: {
                                 Text(notes[index])
     //                                .foregroundStyle(.red)
                                     .frame(width: 110, height: 30) // Text의 크기를 설정
@@ -288,8 +247,15 @@ struct CalendarView: View {
                 }) // ZStack
             }) // VStack
         }) // GeometryReader
+        .onAppear {
+            noteList.removeAll()
+            let query = SearchQuery()
+            Task{
+                noteList = try await query.loadData(url: URL(string: "http://localhost:8080")!)
+            }
+        }
     } // noteListView
-} // CalendarView
+}
 
 
 // MARK: - 일자 셀 뷰
@@ -331,6 +297,7 @@ private struct CellView: View {
         self.isCurrentMonthDay = isCurrentMonthDay
     }
     
+    
     fileprivate var body: some View {
         VStack {
             Circle()
@@ -341,16 +308,17 @@ private struct CellView: View {
             Spacer()
             
             if clicked {
+                
                 RoundedRectangle(cornerRadius: 10)
                     .fill(.red)
                     .frame(width: 10, height: 10)
+                
             } else {
                 Spacer()
                     .frame(height: 10)
             }
         }
         .frame(height: 50)
-        
     } // fileprivate
     
 } // CellView
@@ -396,21 +364,6 @@ private extension CalendarView {
         
         let date = calendar.date(byAdding: dateComponents, to: firstDayOfMonth) ?? Date()
         
-        
-//        if date.formattedCalendarDayDate == today.formattedCalendarDayDate {
-//            let query = SearchQuery()
-//            Task {
-//                // 비동기 작업 수행
-//                let result = try await query.loadData(url: URL(string: "http://localhost:8080/iOS/JSP/SearchThanksNote.jsp?date=\(date.formattedCalendarDayDate)")!)
-//                
-//                // 작업 완료 후 반환값 처리
-//                noteList = result
-//                print(noteList)
-//            }
-//        }
-//        Timer(timeInterval: 2, repeats: false) { Timer in
-//            print("기다리는 중")
-//        }
         return date
         
     }
@@ -479,6 +432,30 @@ private extension CalendarView {
 
 
 extension Date {
+    
+    
+    // 현재 데이터를 Add, Detail로 보내기 위한 Date
+    static let nowDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy년 MM월 dd일 EEE요일"
+        return formatter
+    }()
+    
+    var formattedNowDate: String {
+        return Date.nowDateFormatter.string(from: self)
+    }
+    
+    // 현재 클릭한 데이터를 리스트에 보여주기 위한
+    static let currentClickedDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+    
+    var formattedCurrentClickedDate: String {
+        return Date.currentClickedDateFormatter.string(from: self)
+    }
+    
     static let calendarDayDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyyMMdd"

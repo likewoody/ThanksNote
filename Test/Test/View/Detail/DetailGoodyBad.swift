@@ -51,12 +51,11 @@ struct DetailGoodyBad:View{
             
             Spacer()
             
-            Button("추가하기", action: {
+            Button("수정하기", action: {
                 // DB랑 연결해서 DB에 연결하는 작업하기
                 let query = CUDQuery()
                 Task{
-                    isAlert = try await query.executeQuery(url: URL(string: "http://localhost:8080/iOS/JSP/UpdateThanksNote.jsp?content1=\(goodThing)&content2=\(badThing)&id=\(note.id)")!)
-                    
+                    isAlert = try await query.executeQuery(url: URL(string: "http://localhost:8080/update?content1=\(goodThing)&content2=\(badThing)&id=\(note.id)")!)
                 }
             })
             .frame(width: 80, height: 24)
@@ -80,15 +79,15 @@ struct DetailGoodyBad:View{
             })
         })
         .onAppear(perform: {
-            goodThing = note.content1
-            badThing = note.content2!
+            goodThing = note.content1 ?? ""
+            badThing = note.content2 ?? ""
         })
         .alert("삭제 하시겠습니까?", isPresented: $isDelete, actions: {
             HStack(content: {
                 Button("네", action: {
                     let query = CUDQuery()
                     Task{
-                        try await query.executeQuery(url:URL(string: "http://localhost:8080/iOS/JSP/DeleteThanksNote.jsp?id=\(note.id)")!)
+                        try await query.executeQuery(url:URL(string: "http://localhost:8080/delete?id=\(note.id)")!)
                         isDelete = false
                         dismiss()
                     }

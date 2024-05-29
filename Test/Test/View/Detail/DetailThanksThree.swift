@@ -5,6 +5,9 @@
 //  Created by Woody on 5/26/24.
 //
 
+
+// 삭제가 안된다 delete
+// spring boot로는 웹사이트로 들어갔을 때는 들어가나 여기서 주소 찍어주면 delete를 못하네
 import SwiftUI
 
 struct DetailThanksThree: View{
@@ -61,11 +64,11 @@ struct DetailThanksThree: View{
             
             Spacer()
             
-            Button("추가하기", action: {
+            Button("수정하기", action: {
                 // DB랑 연결해서 DB에 연결하는 작업하기
                 let query = CUDQuery()
                 Task{
-                    isAlert = try await query.executeQuery(url: URL(string: "http://localhost:8080/iOS/JSP/UpdateThanksNote.jsp?content1=\(thanksNote1)&content2=\(thanksNote2)&content3=\(thanksNote3)&id=\(note.id)")!)
+                    isAlert = try await query.executeQuery(url: URL(string: "http://localhost:8080/update?content1=\(thanksNote1)&content2=\(thanksNote2)&content3=\(thanksNote3)&id=\(note.id)")!)
                 }
             })
             .frame(width: 80, height: 24)
@@ -92,16 +95,16 @@ struct DetailThanksThree: View{
             })
         })
         .onAppear(perform: {
-            thanksNote1 = note.content1
-            thanksNote2 = note.content2!
-            thanksNote3 = note.content3!
+            thanksNote1 = note.content1 ?? ""
+            thanksNote2 = note.content2 ?? ""
+            thanksNote3 = note.content3 ?? ""
         })
         .alert("삭제 하시겠습니까?", isPresented: $isDelete, actions: {
             HStack(content: {
                 Button("네", action: {
                     let query = CUDQuery()
                     Task{
-                        try await query.executeQuery(url:URL(string: "http://localhost:8080/iOS/JSP/DeleteThanksNote.jsp?id=\(note.id)")!)
+                        try await query.executeQuery(url:URL(string: "http://localhost:8080/delete?id=\(note.id)")!)
                         isDelete = false
                         dismiss()
                     }

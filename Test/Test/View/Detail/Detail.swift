@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct Detail: View {
-    var id: Int
-    var category: String
-    var nowDate: String
+    @State var id: String
+    @State var category: String
+    @State var nowDate: String
     
     @State var note: DBModel
     
