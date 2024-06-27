@@ -1,5 +1,5 @@
 
-<img src="https://github.com/likewoody/ThanksNote/assets/151493474/d794e334-6799-4129-8296-0b2f3786979a" width=200 height=300><br><br>
+<img src="https://github.com/likewoody/ThanksNote/assets/151493474/d794e334-6799-4129-8296-0b2f3786979a" height=300><br><br>
 
 # ThanksNote
 ### About Project
